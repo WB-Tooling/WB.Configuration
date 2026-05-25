@@ -46,6 +46,7 @@ public interface IConfigurationNode
     /// <typeparam name="T">The type of the value to retrieve.</typeparam>
     /// <param name="key">The key associated with the value.</param>
     /// <returns>The value associated with the specified key, or the default value of type <typeparamref name="T"/> if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "'Get' is a common method name for retrieving values in configuration APIs, and the context makes it clear that this is not a property accessor.")]
     public T? Get<T>(string key)
     {
         if (TryGet(key, out T? value))
@@ -103,6 +104,7 @@ public interface IConfigurationNode
     /// <typeparam name="T">The type of the value to retrieve.</typeparam>
     /// <param name="index">The index associated with the value.</param>
     /// <returns>The value associated with the specified index, or the default value of type <typeparamref name="T"/> if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1716:Identifiers should not match keywords", Justification = "'Get' is a common method name for retrieving values in configuration APIs, and the context makes it clear that this is not a property accessor.")]
     public T? Get<T>(int index)
     {
         if (TryGet(index, out T? value))
