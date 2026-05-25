@@ -88,31 +88,26 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
 
     private static JsonNode? Merge(JsonNode? baseNode, JsonNode? overrideNode)
     {
-        //
         if (overrideNode is null)
         {
             return baseNode?.DeepClone();
         }
 
-        // baseNode null → take override node
         if (baseNode is null)
         {
             return overrideNode.DeepClone();
         }
 
-        // both objects → merge recursively
         if (baseNode is JsonObject baseObj && overrideNode is JsonObject overrideObj)
         {
             return MergeObjects(baseObj, overrideObj);
         }
 
-        // Arrays are not merged but replace the base value entirely
         if (overrideNode is JsonArray)
         {
             return overrideNode.DeepClone();
         }
 
-        // Scalars or type conflicts → override wins
         return overrideNode.DeepClone();
     }
 
@@ -120,32 +115,32 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
     {
         JsonObject result = [];
 
-        // Erst alle Keys aus base übernehmen
-        foreach (var kvp in baseObject)
+        foreach (KeyValuePair<string, JsonNode?> kvp in baseObject)
         {
             result[kvp.Key] = kvp.Value?.DeepClone();
         }
 
-        // Dann override anwenden
-        foreach (var kvp in overrideObj)
+        foreach (KeyValuePair<string, JsonNode?> kvp in overrideObj)
         {
             string? key = kvp.Key;
             JsonNode? overrideValue = kvp.Value;
 
-            // Null löscht den Key (VS Code Verhalten)
             if (overrideValue is null)
             {
                 result.Remove(key);
+
                 continue;
             }
 
             if (!result.ContainsKey(key))
             {
                 result[key] = overrideValue.DeepClone();
+
                 continue;
             }
 
             JsonNode? baseValue = result[key];
+
             result[key] = Merge(baseValue, overrideValue);
         }
 
