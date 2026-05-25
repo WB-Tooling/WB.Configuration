@@ -1,21 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace WB.Configuration;
 
+/// <inheritdoc cref="IConfiguration"/>
 internal sealed class Configuration : IConfiguration, IConfigurationNode
 {
+    // ┌─────────────────────────────────────────────────────────────────────────────┐
+    // │ Private Fields                                                              │
+    // └─────────────────────────────────────────────────────────────────────────────┘
     private static readonly JsonSerializerOptions jsonSerializerOptions = new();
 
-    public readonly List<JsonNode?> layers = [];
+    private readonly List<JsonNode?> layers = [];
 
     private ConfigurationNode? configurationNode;
 
-    internal IReadOnlyList<JsonNode?> Layers => layers;
+    // ┌─────────────────────────────────────────────────────────────────────────────┐
+    // │ Public Methods                                                              │
+    // └─────────────────────────────────────────────────────────────────────────────┘
 
+    /// <inheritdoc />
     public bool TryGet<T>(string key, out T? value)
     {
         if (configurationNode is null)
@@ -28,6 +34,7 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
         return configurationNode.TryGet(key, out value);
     }
 
+    /// <inheritdoc />
     public bool TryGet<T>(int index, out T? value)
     {
         if (configurationNode is null)
@@ -41,6 +48,7 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
     }
 
 
+    /// <inheritdoc />
     public IDisposable Push(object configuration)
     {
         JsonNode? jsonNode = JsonSerializer.SerializeToNode(configuration, jsonSerializerOptions);
@@ -63,6 +71,9 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
         });
     }
 
+    // ┌─────────────────────────────────────────────────────────────────────────────┐
+    // │ Private Methods                                                             │
+    // └─────────────────────────────────────────────────────────────────────────────┘
     private static JsonNode? MergeLayers(IEnumerable<JsonNode?> layers)
     {
         JsonNode? merged = null;
@@ -107,7 +118,7 @@ internal sealed class Configuration : IConfiguration, IConfigurationNode
 
     private static JsonObject MergeObjects(JsonObject baseObject, JsonObject overrideObj)
     {
-        JsonObject result = new();
+        JsonObject result = [];
 
         // Erst alle Keys aus base übernehmen
         foreach (var kvp in baseObject)
