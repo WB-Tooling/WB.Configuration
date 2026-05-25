@@ -3,7 +3,7 @@
        │ Target Framework                                                     │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-     <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
@@ -22,33 +22,33 @@
        │ Version                                                              │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-      <Version>1.0.0</Version>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
        │ Deterministic Builds                                                 │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-      <Deterministic>true</Deterministic>
-      <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
        │ Debug Settings                                                       │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-      <DebugType>portable</DebugType>
-      <DebugSymbols>true</DebugSymbols>
-      <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
        │ Nullability Settings                                                 │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-      <LangVersion>latest</LangVersion>
-      <Nullable>enable</Nullable>
-      <WarningsAsErrors>nullable</WarningsAsErrors>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
   </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
