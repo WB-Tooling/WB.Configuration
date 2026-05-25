@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WB.Configuration.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ConfigurationTests/src/ConfigurationTests.csproj" />
+    <Project Path="tests/ConfigurationNodeTests/src/ConfigurationNodeTests.csproj" />
+    <Project Path="tests/IConfigurationNodeTests/src/IConfigurationTests.csproj" />
+  </Folder>
+</Solution>
