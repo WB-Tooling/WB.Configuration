@@ -10,11 +10,11 @@
        │ Package Info.                                                        │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-    <Authors>{{Author}}</Authors>
-    <Description>{{Description}}</Description>
-    <PackageTags>{{Tags}}</PackageTags>
-    <PackageProjectUrl>{{ProjectUrl}}</PackageProjectUrl>
-    <RepositoryUrl>{{RepositoryUrl}}</RepositoryUrl>
+    <Authors>Wolf Bublitz</Authors>
+    <Description>An extensible configuration system that allows for layering of configuration sources, enabling dynamic and flexible configuration management in applications.</Description>
+    <PackageTags>Configuration</PackageTags>
+    <PackageProjectUrl>https://github.com/WB-Tooling/WB.Configuration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/WB-Tooling/WB.Configuration</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
