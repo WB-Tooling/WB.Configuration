@@ -3,10 +3,31 @@ using System.Collections.Generic;
 
 namespace WB.Configuration;
 
+/// <summary>
+/// Represents a node in a configuration hierarchy. A configuration node can be queried for values using keys or indices.
+/// </summary>
 public interface IConfigurationNode
 {
+    // ┌─────────────────────────────────────────────────────────────────────────────┐
+    // │ Public Methods                                                              │
+    // └─────────────────────────────────────────────────────────────────────────────┘
+
+    /// <summary>
+    /// Tries to get a value of type <typeparamref name="T"/> associated with the specified key. Returns true if the key exists and the value can be converted to type <typeparamref name="T"/>; otherwise, returns false and sets the output parameter to default.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="key">The key associated with the value.</param>
+    /// <param name="value">When this method returns, contains the value associated with the specified key, if the key is found and the value can be converted to type <typeparamref name="T"/>; otherwise, the default value for type <typeparamref name="T"/>.</param>
+    /// <returns>true if the key exists and the value can be converted to type <typeparamref name="T"/>; otherwise, false.</returns>
     public bool TryGet<T>(string key, out T? value);
 
+    /// <summary>
+    /// Gets a value of type <typeparamref name="T"/> associated with the specified key. Throws a <see cref="KeyNotFoundException"/> if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="key">The key associated with the value.</param>
+    /// <returns>The value associated with the specified key.</returns>
+    /// <exception cref="KeyNotFoundException">Thrown if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.</exception>
     public T GetRequired<T>(string key)
     {
         if (TryGet(key, out T? value) && value is not null)
@@ -19,6 +40,12 @@ public interface IConfigurationNode
         }
     }
 
+    /// <summary>
+    /// Gets a value of type <typeparamref name="T"/> associated with the specified key. Returns the default value of type <typeparamref name="T"/> if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="key">The key associated with the value.</param>
+    /// <returns>The value associated with the specified key, or the default value of type <typeparamref name="T"/> if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
     public T? Get<T>(string key)
     {
         if (TryGet(key, out T? value))
@@ -31,6 +58,13 @@ public interface IConfigurationNode
         }
     }
 
+    /// <summary>
+    /// Gets a value of type <typeparamref name="T"/> associated with the specified key. Returns the specified default value if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="key">The key associated with the value.</param>
+    /// <param name="defaultValue">The default value to return if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.</param>
+    /// <returns>The value associated with the specified key, or the specified default value if the key does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
     public T GetOrDefault<T>(string key, T defaultValue)
     {
         if (TryGet(key, out T? value) && value is not null)
@@ -43,8 +77,14 @@ public interface IConfigurationNode
         }
     }
 
+    /// <summary>
+    /// Tries to get a value of type <typeparamref name="T"/> associated with the specified index. Returns true if the index exists and the value can be converted to type <typeparamref name="T"/>; otherwise, returns false and sets the output parameter to default.
+    /// </summary>
     public bool TryGet<T>(int index, out T? value);
 
+    /// <summary> Gets a value of type <typeparamref name="T"/> associated with the specified index. Throws an
+    /// <see cref="ArgumentOutOfRangeException"/> if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
     public T GetRequired<T>(int index)
     {
         if (TryGet(index, out T? value) && value is not null)
@@ -57,6 +97,12 @@ public interface IConfigurationNode
         }
     }
 
+    /// <summary>
+    /// Gets a value of type <typeparamref name="T"/> associated with the specified index. Returns the default value of type <typeparamref name="T"/> if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="index">The index associated with the value.</param>
+    /// <returns>The value associated with the specified index, or the default value of type <typeparamref name="T"/> if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
     public T? Get<T>(int index)
     {
         if (TryGet(index, out T? value))
@@ -69,6 +115,13 @@ public interface IConfigurationNode
         }
     }
 
+    /// <summary>
+    /// Gets a value of type <typeparamref name="T"/> associated with the specified index. Returns the specified default value if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value to retrieve.</typeparam>
+    /// <param name="index">The index associated with the value.</param>
+    /// <param name="defaultValue">The default value to return if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.</param>
+    /// <returns>The value associated with the specified index, or the specified default value if the index does not exist or the value cannot be converted to type <typeparamref name="T"/>.</returns>
     public T GetOrDefault<T>(int index, T defaultValue)
     {
         if (TryGet(index, out T? value) && value is not null)
