@@ -6,7 +6,7 @@ using System.Text.Json.Nodes;
 namespace WB.Configuration;
 
 /// <inheritdoc cref="IConfiguration"/>
-internal sealed class Configuration : IConfiguration, IConfigurationNode
+public sealed class Configuration : IConfiguration, IConfigurationNode
 {
     // ┌─────────────────────────────────────────────────────────────────────────────┐
     // │ Private Fields                                                              │
