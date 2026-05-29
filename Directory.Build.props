@@ -1,55 +1,55 @@
 <Project>
-    <!-- ╭──────────────────────────────────────────────────────────────────────╮
-         │ Target Framework                                                     │
-         ╰──────────────────────────────────────────────────────────────────────╯ -->
-    <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
-    </PropertyGroup>
+  <!-- ╭──────────────────────────────────────────────────────────────────────╮
+       │ Target Framework                                                     │
+       ╰──────────────────────────────────────────────────────────────────────╯ -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
        │ Package Info.                                                        │
        ╰──────────────────────────────────────────────────────────────────────╯ -->
   <PropertyGroup>
-    <Authors>{{Author}}</Authors>
-    <Description>{{Description}}</Description>
-    <PackageTags>{{Tags}}</PackageTags>
-    <PackageProjectUrl>{{ProjectUrl}}</PackageProjectUrl>
-    <RepositoryUrl>{{RepositoryUrl}}</RepositoryUrl>
+    <Authors>Wolf Bublitz</Authors>
+    <Description>An extensible configuration system that allows for layering of configuration sources, enabling dynamic and flexible configuration management in applications.</Description>
+    <PackageTags>Configuration</PackageTags>
+    <PackageProjectUrl>https://github.com/WB-Tooling/WB.Configuration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/WB-Tooling/WB.Configuration</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
-    <!-- ╭──────────────────────────────────────────────────────────────────────╮
-         │ Version                                                              │
-         ╰──────────────────────────────────────────────────────────────────────╯ -->
-    <PropertyGroup>
-        <Version>1.0.0</Version>
-    </PropertyGroup>
+  <!-- ╭──────────────────────────────────────────────────────────────────────╮
+       │ Version                                                              │
+       ╰──────────────────────────────────────────────────────────────────────╯ -->
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
 
-    <!-- ╭──────────────────────────────────────────────────────────────────────╮
-         │ Deterministic Builds                                                 │
-         ╰──────────────────────────────────────────────────────────────────────╯ -->
-    <PropertyGroup>
-        <Deterministic>true</Deterministic>
-        <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    </PropertyGroup>
+  <!-- ╭──────────────────────────────────────────────────────────────────────╮
+       │ Deterministic Builds                                                 │
+       ╰──────────────────────────────────────────────────────────────────────╯ -->
+  <PropertyGroup>
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
 
-    <!-- ╭──────────────────────────────────────────────────────────────────────╮
-         │ Debug Settings                                                       │
-         ╰──────────────────────────────────────────────────────────────────────╯ -->
-    <PropertyGroup>
-        <DebugType>portable</DebugType>
-        <DebugSymbols>true</DebugSymbols>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    </PropertyGroup>
+  <!-- ╭──────────────────────────────────────────────────────────────────────╮
+       │ Debug Settings                                                       │
+       ╰──────────────────────────────────────────────────────────────────────╯ -->
+  <PropertyGroup>
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+  </PropertyGroup>
 
-    <!-- ╭──────────────────────────────────────────────────────────────────────╮
-         │ Nullability Settings                                                 │
-         ╰──────────────────────────────────────────────────────────────────────╯ -->
-    <PropertyGroup>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-        <WarningsAsErrors>nullable</WarningsAsErrors>
-    </PropertyGroup>
+  <!-- ╭──────────────────────────────────────────────────────────────────────╮
+       │ Nullability Settings                                                 │
+       ╰──────────────────────────────────────────────────────────────────────╯ -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+  </PropertyGroup>
 
   <!-- ╭──────────────────────────────────────────────────────────────────────╮
        │ README                                                               │
