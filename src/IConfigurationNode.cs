@@ -9,6 +9,24 @@ namespace WB.Configuration;
 public interface IConfigurationNode
 {
     // ┌─────────────────────────────────────────────────────────────────────────────┐
+    // │ Public Indexers                                                             │
+    // └─────────────────────────────────────────────────────────────────────────────┘
+
+    /// <summary>
+    /// Gets a child configuration node associated with the specified key. If the key does not exist, returns an empty configuration node that will return default values for any queries.
+    /// </summary>
+    /// <param name="key">The key associated with the child configuration node.</param>
+    /// <returns>A child configuration node associated with the specified key, or an empty configuration node if the key does not exist.</returns>
+    public IConfigurationNode this[string key] { get; }
+
+    /// <summary>
+    /// Gets a child configuration node at the specified index. If the index is out of range, returns an empty configuration node that will return default values for any queries.
+    /// </summary>
+    /// <param name="index">The index of the child configuration node.</param>
+    /// <returns>A child configuration node at the specified index, or an empty configuration node if the index is out of range.</returns>
+    public IConfigurationNode this[int index] { get; }
+
+    // ┌─────────────────────────────────────────────────────────────────────────────┐
     // │ Public Methods                                                              │
     // └─────────────────────────────────────────────────────────────────────────────┘
 
