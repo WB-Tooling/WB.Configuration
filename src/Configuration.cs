@@ -17,6 +17,32 @@ public sealed class Configuration : IConfiguration, IConfigurationNode
 
     private ConfigurationNode? configurationNode;
 
+    public IConfigurationNode this[int index]
+    {
+        get
+        {
+            if (configurationNode is null)
+            {
+                return new ConfigurationNode(null);
+            }
+
+            return configurationNode[index];
+        }
+    }
+
+    public IConfigurationNode this[string key]
+    {
+        get
+        {
+            if (configurationNode is null)
+            {
+                return new ConfigurationNode(null);
+            }
+
+            return configurationNode[key];
+        }
+    }
+
     // ┌─────────────────────────────────────────────────────────────────────────────┐
     // │ Public Methods                                                              │
     // └─────────────────────────────────────────────────────────────────────────────┘
