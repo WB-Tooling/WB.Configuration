@@ -1,5 +1,6 @@
 namespace WB.Configuration;
 
+using System;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -14,6 +15,19 @@ internal sealed class ConfigurationNode(JsonNode? jsonNode) : IConfigurationNode
     // ┌─────────────────────────────────────────────────────────────────────────────┐
     // │ Public Indexers                                                             │
     // └─────────────────────────────────────────────────────────────────────────────┘
+
+    /// <inheritdoc />
+    public T Get<T>()
+    {
+        if (jsonNode is null)
+        {
+            return default!;
+        }
+
+        T? result = jsonNode.Deserialize<T>() ?? throw new InvalidOperationException($"Failed to deserialize JSON node to type {typeof(T).FullName}.");
+        
+        return result;
+    }
 
     /// <inheritdoc />
     public IConfigurationNode this[string key]

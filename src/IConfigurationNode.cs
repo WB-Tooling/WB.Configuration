@@ -30,6 +30,8 @@ public interface IConfigurationNode
     // │ Public Methods                                                              │
     // └─────────────────────────────────────────────────────────────────────────────┘
 
+    public T Get<T>();
+
     /// <summary>
     /// Tries to get a value of type <typeparamref name="T"/> associated with the specified key. Returns true if the key exists and the value can be converted to type <typeparamref name="T"/>; otherwise, returns false and sets the output parameter to default.
     /// </summary>
