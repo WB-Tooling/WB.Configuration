@@ -48,6 +48,17 @@ public sealed class Configuration : IConfiguration, IConfigurationNode
     // └─────────────────────────────────────────────────────────────────────────────┘
 
     /// <inheritdoc />
+    public T Get<T>()
+    {
+        if (configurationNode is null)
+        {
+            return default!;
+        }
+
+        return configurationNode.Get<T>();
+    }
+
+    /// <inheritdoc />
     public bool TryGet<T>(string key, out T? value)
     {
         if (configurationNode is null)
